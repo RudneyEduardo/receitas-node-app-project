@@ -1,17 +1,19 @@
 import fastify from 'fastify'
-import fastifyMongodb,  { FastifyMongodbOptions } from '@fastify/mongodb'
+import fastifyMongodb, { FastifyMongodbOptions } from '@fastify/mongodb'
 import { routes } from './routes/index.ts';
 const PORT = 8080;
+const mongo_url = process.env.MONGOURL
+
 const mongoOptions: FastifyMongodbOptions = {
-  url: process.env.MONGOURL,
+  url: `${mongo_url}`,
   forceClose: true
-} 
+}
 
 const server = fastify({ logger: true });
 server.register(fastifyMongodb, mongoOptions)
 
 routes.forEach((route) => {
-   server.route(route);
+  server.route(route);
 });
 
 

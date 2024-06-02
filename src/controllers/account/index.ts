@@ -1,12 +1,13 @@
 
 const getUser = async function (req: any, reply: any) {
     const users = this.mongo.db.collection('accounts')
-    //const { username, password } = req.header
+    const { username } = req.headers
+    console.log(username)
     const options = {
-        projection: { _id: 0, username: 1 },
+        projection: { _id: 0,  password: 1, username: 1 },
     };
     try {
-        const user = await users.findOne({ username: 'teste', password: '1234' }, options)
+        const user = await users.findOne({ username }, options)
         console.log(user)
         return user
     } catch (err) {
