@@ -1,0 +1,25 @@
+{
+  "name": "receitas-node-app-project",
+  "version": "1.0.0",
+  "description": "backend for an mobile app",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --envi-file .env --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/mongodb": "^8.0.0",
+    "fastify": "^4.27.0",
+    "mongodb": "^6.7.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.13.0",
+    "nodemon": "^3.1.2",
+    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2"
+  }
+}
