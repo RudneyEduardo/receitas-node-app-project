@@ -15,6 +15,11 @@ const recipes: Array<RouteOptions>  = [
         method: 'HEAD',
         url: '/',
         handler: (req, res) => {return 'Roi'},
+    },
+    {
+        method: 'GET',
+        url: '/',
+        handler: (req, res) => {return 'Roi'},
     }
 ];
 export { recipes }
