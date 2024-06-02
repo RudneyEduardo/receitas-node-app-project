@@ -1,7 +1,7 @@
 
 const getRecipes = async function (req: any, reply: any) {
     const recipes = this.mongo.db.collection('recipes')
-    const { username } = req.header
+    const { username } = req.headers
     try {
         const recipesCursor = await recipes.find({ username })
         if ((await recipesCursor.count()) === 0) {
@@ -17,7 +17,7 @@ const getRecipes = async function (req: any, reply: any) {
 
 const addRecipe = async function async(req: any, reply: any) {
     const recipes = this.mongo.db.collection('recipes')
-    const { recipename, recipeImgPath } = req.header
+    const { recipename, recipeImgPath } = req.headers
     try {
         return await recipes.insertOne({ recipename, recipeImgPath });
     } catch (error) {
