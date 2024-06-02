@@ -10,6 +10,11 @@ const recipes: Array<RouteOptions>  = [
         method: 'POST',
         url: '/api/recipes',
         handler: addRecipe,
+    },
+    {
+        method: 'HEAD',
+        url: '/',
+        handler: (req, res) => {return 'Roi'},
     }
 ];
 export { recipes }
