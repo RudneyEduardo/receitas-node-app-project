@@ -17,10 +17,10 @@ const getRecipes = async function (req: any, reply: any) {
 
 const addRecipe = async function async(req: any, reply: any) {
     const recipes = this.mongo.db.collection('recipes')
-    const { recipename, recipeimgpath } = req.headers
-    console.log("PATH: ", req.headers)
+    const { recipename, recipeimgpath, username } = req.headers
+    
     try {
-        return await recipes.insertOne({ recipename, recipeimgpath });
+        return await recipes.insertOne({ recipename, recipeimgpath, username });
     } catch (error) {
         return error
     }
