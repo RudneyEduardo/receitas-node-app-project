@@ -1,5 +1,5 @@
 import { RouteOptions } from 'fastify';
-import { addRecipe, getRecipes } from '../../controllers/index.ts'
+import { addRecipe, getRecipes, updateRecipe } from '../../controllers/index.ts'
 const recipes: Array<RouteOptions>  = [
     {
         method: 'GET',
@@ -10,6 +10,11 @@ const recipes: Array<RouteOptions>  = [
         method: 'POST',
         url: '/api/recipes',
         handler: addRecipe,
+    },
+    {
+        method: 'PATCH',
+        url: '/api/recipes',
+        handler: updateRecipe,
     },
     {
         method: 'HEAD',

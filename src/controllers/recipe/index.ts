@@ -1,3 +1,4 @@
+import { ObjectId } from "@fastify/mongodb";
 
 const getRecipes = async function (req: any, reply: any) {
     const recipes = this.mongo.db.collection('recipes')
@@ -15,10 +16,10 @@ const getRecipes = async function (req: any, reply: any) {
 
 
 
-const addRecipe = async function async(req: any, reply: any) {
+const addRecipe = async function (req: any, reply: any) {
     const recipes = this.mongo.db.collection('recipes')
     const { recipename, recipeimgpath, username } = req.headers
-    
+
     try {
         return await recipes.insertOne({ recipename, recipeimgpath, username, 'usable': true });
     } catch (error) {
@@ -27,5 +28,16 @@ const addRecipe = async function async(req: any, reply: any) {
 };
 
 
+const updateRecipe = async function (req: any, reply: any) {
+    const recipes = this.mongo.db.collection('recipes')
+    const { id, usable } = req.headers
+    try {
+       return recipes.updateOne({ _id: new ObjectId(id) }, { $set: { usable } })
+    } catch (error) {
+        return error
+    }
+    
+}
 
-export { addRecipe, getRecipes }
+
+export { addRecipe, getRecipes, updateRecipe }
