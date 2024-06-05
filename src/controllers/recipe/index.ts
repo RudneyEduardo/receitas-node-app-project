@@ -20,7 +20,7 @@ const addRecipe = async function async(req: any, reply: any) {
     const { recipename, recipeimgpath, username } = req.headers
     
     try {
-        return await recipes.insertOne({ recipename, recipeimgpath, username });
+        return await recipes.insertOne({ recipename, recipeimgpath, username, 'usable': true });
     } catch (error) {
         return error
     }
