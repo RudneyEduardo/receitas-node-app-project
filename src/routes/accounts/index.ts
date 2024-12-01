@@ -1,4 +1,4 @@
-import { addUser, getUser } from '../../controllers/index.ts'
+import { addUser, getUser, getLoginUser } from '../../controllers/index.ts'
 import {RouteOptions} from 'fastify'
 
 const accounts: Array<RouteOptions> = [
@@ -11,6 +11,11 @@ const accounts: Array<RouteOptions> = [
         method: 'POST',
         url: '/api/account',
         handler: addUser,
+    },
+    {
+        method: 'POST',
+        url: '/api/login',
+        handler: getLoginUser,
     }
 ];
 export { accounts }
